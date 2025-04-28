@@ -24,6 +24,9 @@ app.get('/', (req, res)=>{
     res.send('I Post')
 })
 
+// registro il middleware
+app.use(errorsHandler)
+
 // metto in ascolto il server
 app.listen(port, () =>{
     console.log(`server in ascolto alla porta ${port}`)
