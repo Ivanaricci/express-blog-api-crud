@@ -50,8 +50,15 @@ function store(req,res){
     }
 
     posts.push(newPost);
-
     console.log(posts);
+
+    // codice di stato a 201
+    res.status(201);
+
+    // inviamo il nuovo oggetto come json
+    res.json(newPost);
+
+    
 }
 
 // update
