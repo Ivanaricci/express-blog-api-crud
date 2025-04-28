@@ -65,7 +65,17 @@ function store(req,res){
 function update(req,res){
     const id = parseInt(req.params.id);
     // recuperiamo il post
-    const post = posts.find(post => post.id === id)
+    const post = posts.find(post => post.id === id);
+
+    // controllo del post
+    if(!post){
+        res.status(404);
+
+        return res.json({
+            error: 'Not found',
+            message: 'Post non trovato'
+        })
+    }
 
     post.title = req.body.title;
     post.content = req.body.content;
