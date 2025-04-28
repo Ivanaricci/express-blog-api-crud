@@ -13,6 +13,9 @@ app.use(express.json());
 // importo il router in una variabile
 const postsRouter = require('./routers/posts.js');
 
+// importazione middleware errors
+const errorsHandler = require('./middlewares/errorsHandler.js')
+
 // utilizzo postsRouter per creare le rotte
 app.use('/posts', postsRouter)
 
