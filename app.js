@@ -25,7 +25,7 @@ app.get('/', (req, res)=>{
 })
 
 // registro il middleware
-app.use(errorsHandler)
+app.use(errorsHandler);
 
 // metto in ascolto il server
 app.listen(port, () =>{
