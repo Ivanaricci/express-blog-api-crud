@@ -8,7 +8,7 @@ function index(req,res){
     let filteredPosts = posts;
 
     if(tag){
-        filteredPosts = posts.filter(post => post.tags.includes(tag))
+        filteredPosts = posts.filter(post => post.tags.includes(tag));
     }
     res.json(filteredPosts);
 }
@@ -18,9 +18,17 @@ function show(req,res){
     const id = parseInt(req.params.id);
 
     const post = posts.find((post) =>{
-        return post.id == id;
+        return post.id === id;
     } )
 
+    if(post === undefined){
+        res.status(404);
+
+        res.json({
+            error: 'Not Found',
+            message: 'Post non trovato'
+        })
+    }
 
     res.json(post)
     
@@ -28,7 +36,18 @@ function show(req,res){
 
 // store
 function store(req,res){
-    res.send('inserimento di un nuovo post');
+
+    // console.log(req.body);
+    
+    const newId = posts[posts.length - 1].id + 1;
+
+        // nuovo oggetto
+    const newPost = {
+        title: req.body.title,
+        content: req.body.content,
+        image: req.body.image,
+        tags: req.body.tags
+    }
 }
 
 // update
@@ -46,6 +65,15 @@ function destroy(req,res){
     const id = parseInt(req.params.id);
 
     const post = posts.find(post => post.id === id);
+
+    if(post === undefined){
+        res.status(404);
+
+        res.json({
+            error: 'Not Found',
+            message: 'Post non trovato'
+        })
+    }
 
     posts.splice(posts.indexOf(post), 1);
     console.log(posts)
