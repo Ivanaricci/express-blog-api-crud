@@ -72,7 +72,9 @@ function update(req,res){
     post.image = req.body.image;
     post.tags = req.body.tags;
 
-    console.log(posts)
+    console.log(posts);
+
+    res.json(post)
 }
 
 // modify
