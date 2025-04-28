@@ -16,6 +16,9 @@ const postsRouter = require('./routers/posts.js');
 // importazione middleware errors
 const errorsHandler = require('./middlewares/errorsHandler.js')
 
+// importazione middleware notFound
+const notFound = require('./middlewares/notFound.js')
+
 // utilizzo postsRouter per creare le rotte
 app.use('/posts', postsRouter)
 
@@ -26,6 +29,8 @@ app.get('/', (req, res)=>{
 
 // registro il middleware
 app.use(errorsHandler);
+
+app.use(notFound);
 
 // metto in ascolto il server
 app.listen(port, () =>{
