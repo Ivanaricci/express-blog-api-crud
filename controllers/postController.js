@@ -66,6 +66,13 @@ function update(req,res){
     const id = parseInt(req.params.id);
     // recuperiamo il post
     const post = posts.find(post => post.id === id)
+
+    post.title = req.body.title;
+    post.content = req.body.content;
+    post.image = req.body.image;
+    post.tags = req.body.tags;
+
+    console.log(posts)
 }
 
 // modify
